@@ -27,6 +27,10 @@ class geogoogleapiwrapper:
             print("{} pin could not be found, find manually!. Exception : {}".format(pincode, GenError.message))
             return [0, 0]
 
+    def __init__(self):
+        requests.ConnectTimeout = 3
+        requests.ReadTimeout=2
+        requests.Timeout=2
 
     def getreverseaddressforgivenlatandlong(self, latitude, longitude):
         try:
