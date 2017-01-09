@@ -27,7 +27,7 @@ class geolocation:
     """ Initialization will pick any first csv file and proceed
         will read the output.csv in the output folder
     """
-    def __init__(self,wrapper="geopywrapper"):
+    def __init__(self,wrapper="googleapi"):
         try:
             self.wrappertouse=wrapper
             files = os.listdir(self.inputfolder)
@@ -125,8 +125,10 @@ class geolocation:
         #TODO: FIX THIS BY OOPS CONCEPT
         if self.wrappertouse == self.GOOGLEAPIPROVIDER:
             geowrapper = googleapi.geogoogleapiwrapper()
+            print("GoogleApi provider created")
         elif self.wrappertouse == self.GEOPYWRAPPER:
             geowrapper = geopywrap.geopywrapper()
+            print("GeoPy provider created")
 
         """for each different pincode get lat/long and address
         """
@@ -163,7 +165,7 @@ class geolocation:
 Marking this class as the main for the package
 """
 #if __name__== "__main__":
-#geopy = geolocation("geopywrapper")
+"""geopy = geolocation("geopywrapper")"""
 geopy = geolocation("googleapi")
-geopy.writelatandlong(limit=1000)
+geopy.writelatandlong(limit=2)
 

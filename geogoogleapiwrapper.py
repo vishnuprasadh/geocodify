@@ -31,6 +31,7 @@ class geogoogleapiwrapper:
         requests.ConnectTimeout = 3
         requests.ReadTimeout=2
         requests.Timeout=2
+        print("Timeout for request objects set")
 
     def getreverseaddressforgivenlatandlong(self, latitude, longitude):
         try:

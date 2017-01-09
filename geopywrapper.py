@@ -33,6 +33,6 @@ class geopywrapper:
 
 
 # Tests
-geopywrap = geopywrapper()
-lat = geopywrap.getlatandlongforgivenpincode("560034")
-print(geopywrap.getreverseaddressforgivenlatandlong(lat[0],lat[1]))
+#geopywrap = geopywrapper()
+#lat = geopywrap.getlatandlongforgivenpincode("560034")
+#print(geopywrap.getreverseaddressforgivenlatandlong(lat[0],lat[1]))
