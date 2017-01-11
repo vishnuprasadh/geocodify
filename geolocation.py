@@ -106,7 +106,6 @@ class geolocation:
             """Get unique pincode from input & ooutput files for which lat & long already generated"""
             self.inputset = set(np.unique(x for x in self.inputdf[self.pincodecolumnname]))
             if self.outfileFound:
-                print("Difference set to be created")
                 #print("printing input file")
                 #print(self.inputdf)
                 #print("print output file")
@@ -114,9 +113,11 @@ class geolocation:
                 self.outputset = set(np.unique(x for x in self.outputdf[self.pincodecolumnname]))
                 #create a delta for which we need to rewrite
                 self.differenceSet = self.inputset.difference(self.outputset)
+                print("Difference set to be created,count of {}".format(len(self.differenceSet)))
+
             else:
                 self.differenceSet = self.inputset
-                print("Difference set same as input set since no file output found")
+                print("Difference set same as input set since no file output found, count of {}".format(len(self.differenceSet)))
         elif refreshAllPincodes:
             print("Refreshing all pinsets")
             self.differenceSet = set(np.unique(x for x in self.inputdf[self.pincodecolumnname]))
@@ -167,5 +168,5 @@ Marking this class as the main for the package
 #if __name__== "__main__":
 """geopy = geolocation("geopywrapper")"""
 geopy = geolocation("googleapi")
-geopy.writelatandlong(limit=2)
+geopy.writelatandlong(limit=100)
 
