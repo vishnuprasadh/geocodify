@@ -24,6 +24,7 @@ class geolocation:
     wrappertouse = ""
     outfileFound = False
 
+
     """ Initialization will pick any first csv file and proceed
         will read the output.csv in the output folder
     """
@@ -99,6 +100,7 @@ class geolocation:
     """
     def writelatandlong(self,refreshAllPincodes=False, limit=500):
         dictionarylist = list()
+        errordictlist = list()
         csvcolumns = ['pincode','latitude','longitude','address']
         print('started')
         """Recapture latitude only for delta fields missing or for all ?"""
@@ -135,6 +137,7 @@ class geolocation:
         """
         index = 0
         #TODO: Need to modularize with unit tests
+        address=[]
         for pin in self.differenceSet:
             try:
                 print("{} is now being processed".format(pin))
@@ -142,7 +145,10 @@ class geolocation:
                 print(latandlongitude)
                 if not(latandlongitude[0]==0 or latandlongitude[1]==0):
                     address = geowrapper.getreverseaddressforgivenlatandlong(latandlongitude[0],latandlongitude[1])
-                    dictionarylist.insert(index,  [pin, latandlongitude[0],latandlongitude[1],address])
+                    #dictionarylist.insert(index,  [pin, latandlongitude[0],latandlongitude[1],address])
+                else:
+                    address = 'error'
+                dictionarylist.insert(index, [pin, latandlongitude[0], latandlongitude[1], address])
                 index = index + 1
                 if (index > limit-1):
                     break
@@ -168,5 +174,5 @@ Marking this class as the main for the package
 #if __name__== "__main__":
 """geopy = geolocation("geopywrapper")"""
 geopy = geolocation("googleapi")
-geopy.writelatandlong(limit=100)
+geopy.writelatandlong(limit=1450)
 
