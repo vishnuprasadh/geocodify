@@ -174,5 +174,5 @@ Marking this class as the main for the package
 #if __name__== "__main__":
 """geopy = geolocation("geopywrapper")"""
 geopy = geolocation("googleapi")
-geopy.writelatandlong(limit=1450)
+geopy.writelatandlong(limit=2450)
 
